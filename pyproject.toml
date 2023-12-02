@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "new-admin-panel-sprint-3"
+version = "0.1.0"
+description = ""
+authors = ["Maxim Isaev <isaev_0602@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psycopg2 = "^2.9.9"
+elasticsearch = "^8.11.0"
+backoff = "^2.2.1"
+pydantic = "^2.5.2"
+python-dotenv = "^1.0.0"
+ruff = "^0.1.6"
+pre-commit = "^3.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+extend-exclude = ["tests", "*migrations*", ".venv", "env"]
+select = ["E", "F", "B", "W", "I", "D", "PL"]
+ignore = ["D100", "D101", "D102", "D103", "D104", "D107", "D105", "D106", "D203", "D212"]
+per-file-ignores = { "settings*" = ["E501", "F405"] }
+line-length = 120
+unfixable = ["F401"]
+
+
+[tool.ruff.isort]
+known-local-folder = ["etl"]
+
+
+[tool.ruff.mccabe]
+max-complexity = 10
