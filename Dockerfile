@@ -14,7 +14,5 @@ RUN pip install --upgrade pip \
 COPY . /app
 
 COPY start.sh create_index.sh ./
-#
-#RUN chmod +x start.sh create_index.sh
 
 ENTRYPOINT ["./start.sh"]

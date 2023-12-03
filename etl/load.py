@@ -15,6 +15,11 @@ class ElasticsearchLoader:
     def __init__(self, host: str):
         self.client = Elasticsearch(host)
 
+    def close(self):
+        if self.client:
+            self.client.close()
+            logger.info("Соединение с Elasticsearch закрыто")
+
     def prepare_data(self, data: list[FilmworkModel]) -> dict[str, Any]:
         for doc in data:
             yield {"_index": "movies", "_id": doc.id, "_source": doc.model_dump()}
